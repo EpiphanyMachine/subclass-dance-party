@@ -1,5 +1,5 @@
 var PacmanDancer = function(top, left, timeBetweenSteps){
-  Dancer.call(this, top, 0, 6000, 'pacman');
+  Dancer.call(this, top, 0, 6000, 'PacmanDancer');
   this.top = top;
 };
 PacmanDancer.prototype = Object.create(Dancer.prototype);
@@ -13,7 +13,7 @@ PacmanDancer.prototype.step = function(context){
 
 
 var ColorChangingDancer = function(top, left, timeBetweenSteps){
-  Dancer.call(this, top, left, timeBetweenSteps, 'circleDancer');
+  Dancer.call(this, top, left, timeBetweenSteps, 'ColorChangingDancer');
   this.top = top;
   this.left = left;
 };
@@ -23,12 +23,10 @@ ColorChangingDancer.prototype.oldStep = Dancer.prototype.step;
 ColorChangingDancer.prototype.step = function(context){
   // call the old version of step at the beginning of any call to this new version of step
   context = context || this;
-  // console.log(context);
   context.oldStep(context);
-  // var hue = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+  var randomHue = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
   context._counter = context._counter || false;
-  context._counter && context.$node.css('border-color','rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')');
-  context._counter || context.$node.css('border-color','rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')');
+  context._counter && context.$node.css('border-color', randomHue);
+  context._counter || context.$node.css('border-color', randomHue);
   context._counter = !context._counter;
-    // $(context).css("color", "green");
 };

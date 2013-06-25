@@ -25,10 +25,10 @@ body, a:link, a:visited, a:active{
   border:10px solid red;
   position:absolute;
 }
-.circleDancer{
+.ColorChangingDancer{
   border-radius:10px;
 }
-.pacman {
+.PacmanDancer {
   width: 0px;
   height: 0px;
   border-right: 20px solid transparent;
