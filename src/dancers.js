@@ -1,23 +1,14 @@
 var PacmanDancer = function(top, left, timeBetweenSteps){
   Dancer.call(this, top, 0, 6000, 'pacman');
-
-  // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
-  // so we must keep a copy of the old version of this function
+  this.top = top;
 };
-
 PacmanDancer.prototype = Object.create(Dancer.prototype);
 PacmanDancer.prototype.constructor = PacmanDancer;
 PacmanDancer.prototype.oldStep = Dancer.prototype.step;
 PacmanDancer.prototype.step = function(context){
-  // call the old version of step at the beginning of any call to this new version of step
   context = context || this;
-  // console.log(context);
+  // call the old version of step at the beginning of any call to this new version of step
   // context.oldStep(context);
-
-  /* toggle() is a jQuery method to show/hide the <span> tag.
-   * See http://api.jquery.com/category/effects/ for this and
-   * other effects you can use on a jQuery-wrapped html tag. */
-  // context._counter = context._counter || false;
 
     // if (context._counter){
       context.$node.animate({'left': '150%'}, context._timeBetweenSteps);
@@ -41,16 +32,15 @@ PacmanDancer.prototype.step = function(context){
 
 
   // context._counter = !context._counter;
-
 };
+
+
 
 var ColorChangingDancer = function(top, left, timeBetweenSteps){
   Dancer.call(this, top, left, timeBetweenSteps, 'circleDancer');
-
-  // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
-  // so we must keep a copy of the old version of this function
+  this.top = top;
+  this.left = left;
 };
-
 ColorChangingDancer.prototype = Object.create(Dancer.prototype);
 ColorChangingDancer.prototype.constructor = ColorChangingDancer;
 ColorChangingDancer.prototype.oldStep = Dancer.prototype.step;
@@ -60,9 +50,6 @@ ColorChangingDancer.prototype.step = function(context){
   // console.log(context);
   context.oldStep(context);
   // var hue = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
-  /* toggle() is a jQuery method to show/hide the <span> tag.
-   * See http://api.jquery.com/category/effects/ for this and
-   * other effects you can use on a jQuery-wrapped html tag. */
   context._counter = context._counter || false;
   context._counter && context.$node.css('border-color','rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')');
   context._counter || context.$node.css('border-color','rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')');

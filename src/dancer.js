@@ -31,3 +31,14 @@ Dancer.prototype.setPosition = function(top, left){
 // Dancer.prototype.$node = $('<span class="dancer"></span>');
   // now that we have defined the dancer object, we can start setting up important parts of it by calling the methods we wrote
   // this one sets the position to some random default point within the body
+
+var collisionDetection = function(){
+  // console.log('detecting...');
+  for (var i = 0; i < window.dancers.ColorChangingDancer.length; i++) {
+    var dancersTop = Math.floor(window.dancers.ColorChangingDancer[i].top);
+    for (var j = 0; j < window.dancers.PacmanDancer.length; j++) {
+      var pacmanTop = Math.floor(window.dancers.PacmanDancer[j].top);
+      if (dancersTop - pacmanTop < 10){ console.log('remove!');window.dancers.ColorChangingDancer.splice(i,1); }
+    }
+  }
+};

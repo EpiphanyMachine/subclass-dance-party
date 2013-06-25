@@ -18,7 +18,10 @@
 
     <script>
       $(document).ready(function(){
-        window.dancers = [];
+        window.dancers = {};
+        window.dancers.PacmanDancer = [];
+        window.dancers.ColorChangingDancer = [];
+        window.setInterval(collisionDetection, 500);
 
         $(".addDancerButton").on("click", function(event){
           /* This function sets up the click handlers for the create-dancer
@@ -44,6 +47,7 @@
             $("body").width() * Math.random(),
             Math.random() * 1000
           );
+          window.dancers[dancerMakerFunctionName].push(dancer);
 
           $('body').append(dancer.$node);
         });
