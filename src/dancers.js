@@ -7,31 +7,7 @@ PacmanDancer.prototype.constructor = PacmanDancer;
 PacmanDancer.prototype.oldStep = Dancer.prototype.step;
 PacmanDancer.prototype.step = function(context){
   context = context || this;
-  // call the old version of step at the beginning of any call to this new version of step
-  // context.oldStep(context);
-
-    // if (context._counter){
-      context.$node.animate({'left': '150%'}, context._timeBetweenSteps);
-      // context.$node.css({
-      // '-webkit-transform': 'rotate(360deg)',
-      // '-moz-transform': 'rotate(360deg)',
-      // '-ms-transform': 'rotate(360deg)',
-      // '-o-transform': 'rotate(360deg)',
-      // 'transform': 'rotate(360deg)',
-      // 'zoom': 1
-      // });
-    // }
-  // context._counter || context.$node.css({
-  //     '-webkit-transform': 'rotate(180deg)',
-  //     '-moz-transform': 'rotate(180deg)',
-  //     '-ms-transform': 'rotate(180deg)',
-  //     '-o-transform': 'rotate(180deg)',
-  //     'transform': 'rotate(180deg)',
-  //     'zoom': 1
-  //   }, context._timeBetweenSteps);
-
-
-  // context._counter = !context._counter;
+  context.$node.animate({'left': '150%'}, context._timeBetweenSteps);
 };
 
 

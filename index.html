@@ -16,12 +16,17 @@
       <a href="#" class="addDancerButton" data-dancer-maker-function-name="ColorChangingDancer">add a disco dancer</a>
     </div>
 
+    <div class='dancers'>
+      <div id='PacmanDancer'></div>
+      <div id='ColorChangingDancer'></div>
+    </div>
+
     <script>
       $(document).ready(function(){
         window.dancers = {};
         window.dancers.PacmanDancer = [];
         window.dancers.ColorChangingDancer = [];
-        window.setInterval(collisionDetection, 500);
+        window.setInterval(collisionDetection, 250);
 
         $(".addDancerButton").on("click", function(event){
           /* This function sets up the click handlers for the create-dancer
@@ -49,7 +54,7 @@
           );
           window.dancers[dancerMakerFunctionName].push(dancer);
 
-          $('body').append(dancer.$node);
+          $('#' + dancerMakerFunctionName).append(dancer.$node);
         });
       });
     </script>
