@@ -30,3 +30,15 @@ ColorChangingDancer.prototype.step = function(context){
   context._counter || context.$node.css('border-color', randomHue);
   context._counter = !context._counter;
 };
+
+var Bomb = function(top, left, timeBetweenSteps){
+  Dancer.call(this, top, left, timeBetweenSteps, 'Bomb');
+  this.top = top;
+  this.left = left;
+};
+Bomb.prototype = Object.create(Dancer.prototype);
+Bomb.prototype.constructor = Bomb;
+Bomb.prototype.oldStep = Dancer.prototype.step;
+Bomb.prototype.step = function(context){
+};
+

@@ -7,6 +7,7 @@
     <script src="src/main.js"></script>
     <script src="src/dancers.js"></script>
     <script src="lib/jquery.easing.min.js"></script>
+    <script src="lib/underscore-min.js"></script>
   </head>
   <body>
 
@@ -14,6 +15,8 @@
       <span class="title">object dance party</span>
       <a href="#" class="addDancerButton" data-dancer-maker-function-name="PacmanDancer">add a pacman</a>
       <a href="#" class="addDancerButton" data-dancer-maker-function-name="ColorChangingDancer">add a disco dancer</a>
+      <a href="#" class="addDancerButton" data-dancer-maker-function-name="Bomb">add a bomb</a>
+      <a href="#" class="alignButton" data-realign="alignLeft">align all objects to left side</a>
     </div>
 
     <div class='dancers'>
@@ -21,11 +24,18 @@
 
     <script>
       $(document).ready(function(){
+        // window.dancers = [];
         window.dancers = {};
         window.dancers.PacmanDancer = [];
         window.dancers.ColorChangingDancer = [];
+        window.dancers.Bomb = [];
         window.setInterval(collisionDetection, 250);
 
+        $(".alignButton").on("click", function(event){
+          _(['PacmanDancer','ColorChangingDancer','Bomb']).each(function(item){
+            $('.' + item).animate({'left': '15px'}, 2000, 'easeOutBounce');
+          });
+        });
         $(".addDancerButton").on("click", function(event){
           var dancerMakerFunctionName = $(this).data("dancer-maker-function-name");
           var dancerMakerFunction = window[dancerMakerFunctionName];
@@ -34,6 +44,7 @@
             $("body").width() * Math.random(),
             Math.random() * 1000
           );
+          // window.dancers.push(dancer);
           window.dancers[dancerMakerFunctionName].push(dancer); // add dancer to global array
           $('.dancers').append(dancer.$node); // append dancer to DOM
         });

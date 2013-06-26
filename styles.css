@@ -41,14 +41,29 @@ body, a:link, a:visited, a:active{
   border-bottom-right-radius: 20px;
 }
 
-.biohazard {
+.Bomb {
   width: 0;
   height: 0;
-  border-bottom: 60px solid black;
-  border-top: 60px solid black;
-  border-left: 60px solid yellow;
-  border-right: 60px solid yellow;
-  -moz-border-radius: 60px; 
-  -webkit-border-radius: 60px; 
-  border-radius: 60px;
+  border-bottom: 15px solid black;
+  border-top: 15px solid black;
+  border-left: 15px solid yellow;
+  border-right: 15px solid yellow;
+  -moz-border-radius: 15px; 
+  -webkit-border-radius: 15px; 
+  border-radius: 15px;
+  -webkit-animation-name:            rotate;
+  -webkit-animation-duration:        1s; 
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: cubic;
 }
+
+
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
